@@ -1,13 +1,13 @@
 #include "ofxChromaKey.h"
 
-ofxBluescreen::ofxBluescreen():threshhold(50),checkForHighest(true) {
+ofxChromaKey::ofxChromaKey():threshold(50),checkForHighest(true) {
 	bgColor.set(0, 0, 255);
 }
 
-ofxBluescreen::~ofxBluescreen() {
+ofxChromaKey::~ofxChromaKey() {
 }
 
-void ofxBluescreen::learnBgColor(ofPixelsRef pixelSource) {
+void ofxChromaKey::learnBgColor(ofPixelsRef pixelSource) {
 	int wXh = pixelSource.getWidth() * pixelSource.getHeight();
 	int numPixels = wXh * pixelSource.getBytesPerPixel();
 	int r,g,b;
@@ -24,22 +24,22 @@ void ofxBluescreen::learnBgColor(ofPixelsRef pixelSource) {
 	update();
 }
 
-void ofxBluescreen::setBgColor(ofColor col) {
+void ofxChromaKey::setBgColor(ofColor col) {
 	bgColor = col;
 	update();
 }
 
-void ofxBluescreen::setPixels(ofPixelsRef pixels) {
+void ofxChromaKey::setPixels(ofPixelsRef pixels) {
 	pixelSource.setFromPixels(pixels.getPixels(), pixels.getWidth(), pixels.getHeight(), OF_IMAGE_COLOR);//pixels.getBitsPerPixel());
 	update();
 }
 
-void ofxBluescreen::setThreshhold(float thresh) {
-	threshhold = thresh;
+void ofxChromaKey::setThreshold(float thresh) {
+	threshold = thresh;
 	update();
 }
 
-void ofxBluescreen::update() {
+void ofxChromaKey::update() {
 	int highestKey = 0;
 
 	float highest=bgColor[highestKey];
@@ -62,7 +62,7 @@ void ofxBluescreen::update() {
 		bool chromaIsHighest = true;
 		if(checkForHighest)
 			chromaIsHighest = ( c[highestKey] > c[(highestKey+1)%3] && c[highestKey] > c[(highestKey+1)%3] );
-		if(fabs(c.getHue()-bgColor.getHue())<threshhold && chromaIsHighest)
+		if(fabs(c.getHue()-bgColor.getHue())<threshold && chromaIsHighest)
 			alpha=0;
 
 
@@ -77,13 +77,13 @@ void ofxBluescreen::update() {
 	delete pixels;
 }
 
-void ofxBluescreen::drawBgColor(int x, int y, int w, int h) {
+void ofxChromaKey::drawBgColor(int x, int y, int w, int h) {
 	ofFill();
 	ofSetColor(bgColor);
 	ofRect(x, y, w, h);
 }
 
-void ofxBluescreen::drawCheckers(int x, int y, int w, int h) {
+void ofxChromaKey::drawCheckers(int x, int y, int w, int h) {
 	int rectSize = 10;
 	ofColor a(30);
 	ofColor b(255);
@@ -101,7 +101,7 @@ void ofxBluescreen::drawCheckers(int x, int y, int w, int h) {
 	}
 }
 
-void ofxBluescreen::draw(int x, int y, int w, int h, bool checkers) {
+void ofxChromaKey::draw(int x, int y, int w, int h, bool checkers) {
 	ofEnableAlphaBlending();
 	if(checkers)
 		drawCheckers(x, y, w, h);
@@ -109,6 +109,6 @@ void ofxBluescreen::draw(int x, int y, int w, int h, bool checkers) {
 	ofImage::draw(x, y, w, h);
 }
 
-float ofxBluescreen::getThreshhold() {
-	return threshhold;
+float ofxChromaKey::getThreshold() {
+	return threshold;
 }

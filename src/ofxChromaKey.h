@@ -3,26 +3,26 @@
 
 #include "ofMain.h"
 
-class ofxBluescreen: public ofImage {
+class ofxChromaKey: public ofImage {
 
 public:
-	ofxBluescreen();
-	~ofxBluescreen();
+	ofxChromaKey();
+	~ofxChromaKey();
 
 	void setPixels(ofPixelsRef pixels);
 	void learnBgColor(ofPixelsRef pixels);
 	void setBgColor(ofColor col);
-	void setThreshhold(float thresh);
+	void setThreshold(float thresh);
 	void drawBgColor(int x=0, int y=0, int w=10, int h=10);
 	void draw(int x, int y, int w, int h, bool checkers=true);
-	float getThreshhold();
+	float getThreshold();
 private:
 	void update();
 	void drawCheckers(int x, int y, int w, int h);
 
 	ofPixels pixelSource;
 	ofColor bgColor;
-	float threshhold;
+	float threshold;
 	int highestKey;
 	bool checkForHighest;
 };

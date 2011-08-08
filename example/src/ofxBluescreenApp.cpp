@@ -27,9 +27,9 @@ void ofxBluescreenApp::draw() {
 //--------------------------------------------------------------
 void ofxBluescreenApp::keyPressed(int key) {
 	if(key == OF_KEY_UP)
-		bluescreen.setThreshhold(bluescreen.getThreshhold()+5);
+		bluescreen.setThreshold(bluescreen.getThreshold()+5);
 	if(key == OF_KEY_DOWN)
-		bluescreen.setThreshhold(bluescreen.getThreshhold()-5);
+		bluescreen.setThreshold(bluescreen.getThreshold()-5);
 }
 
 //--------------------------------------------------------------
