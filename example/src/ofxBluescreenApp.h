@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ofxbluescreen.h"
+#include "ofxChromaKey.h"
 #include "ofMain.h"
 
 class ofxBluescreenApp : public ofBaseApp {

@@ -1,4 +1,4 @@
-#include "ofxbluescreen.h"
+#include "ofxChromaKey.h"
 
 ofxBluescreen::ofxBluescreen():threshhold(50),checkForHighest(true) {
 	bgColor.set(0, 0, 255);
