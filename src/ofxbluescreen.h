@@ -13,7 +13,7 @@ public:
 	void learnBgColor(ofPixelsRef pixels);
 	void setBgColor(ofColor col);
 	void setThreshhold(float thresh);
-	void drawBgColor(int x=0, int y=0, int w=50, int h=50);
+	void drawBgColor(int x=0, int y=0, int w=10, int h=10);
 	void draw(int x, int y, int w, int h, bool checkers=true);
 	float getThreshhold();
 private:
@@ -23,6 +23,8 @@ private:
 	ofPixels pixelSource;
 	ofColor bgColor;
 	float threshhold;
+	int highestKey;
+	bool checkForHighest;
 };
 
 #endif // OFXBLUESCREEN_H
