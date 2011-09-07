@@ -34,6 +34,11 @@ void ofxChromaKey::setPixels(ofPixelsRef pixels) {
 	update();
 }
 
+void ofxChromaKey::setPixels(unsigned char* pixels, int w, int h) {
+	pixelSource.setFromPixels(pixels, w, h, OF_IMAGE_COLOR);//pixels.getBitsPerPixel());
+	update();
+}
+
 void ofxChromaKey::setThreshold(float thresh) {
 	threshold = thresh;
 	update();
@@ -111,4 +116,9 @@ void ofxChromaKey::draw(int x, int y, int w, int h, bool checkers) {
 
 float ofxChromaKey::getThreshold() {
 	return threshold;
+}
+
+ofColor ofxChromaKey::getBgColor()
+{
+	return bgColor;
 }
