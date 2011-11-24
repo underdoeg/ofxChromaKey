@@ -1,1 +1,3 @@
 Very basic chroma keying. Has not (yet) any blur or color correction or whatsoever
+
+This keying addon uses the chroma key method. There is also an addon for color differencing. That produces better results but only works with a green background and a really well lit environement. https://github.com/underdoeg/ofxGreenscreen
